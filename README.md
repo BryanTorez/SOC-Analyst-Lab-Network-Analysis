@@ -81,62 +81,57 @@ Then you want to customize your columns. To do that head over to 'Edit'. Click o
 <br />
 <br />
 <br />
-To begin our analysis, we'll first head over to the 'Statistics' tab and click on 'Capture File Properties". We'll take a look at the first packet which in my case is in 2018 1127 at 8302 and then our last packet is at 9216 with a total elapse time of 42 minutes and 3 seconds do note that the first and last packet time will be local to your computer time this means that your time depending on where you're located or what your time zone your computer is set to may be different than mine but as long as you set the time display format to UTC you're okay the reason that we do this check is to ensure that the pcap that was handed to us is within the time frame although usess in a lab environment it is extremely useful in the real world so I want you to get into the habit of the first packet and last packet you don't want to be spending hours analyzing a peap and then finding out that the data is not even in that pcap: <br/>
+To begin our analysis, we'll first head over to the 'Statistics' tab and click on 'Capture File Properties". We'll take a look at the first packet which in my case is on '2018-11-27' at '8:30:12'. Then our last packet is at '9:12:16' with a total elapsed time of 42 minutes and 3 seconds. Do note that the first and last packet time will be local to your computer time. This means that your time, depending on where you're located or what time zone your computer is set to, may be different than mine. As long as you set the time display format to UTC you're okay. The reason that we do this check is to ensure that the PCAP that was handed to us is within the time frame. Although useless in a lab environment, it is extremely useful in the real world. So I want you to get into the habit of the first packet and last packet. Since you don't want to be spending hours analyzing a PCAP and then finding out that the data is not even in that PCAP. : <br/>
 <br />
 <img src="https://snipboard.io/pDlmbJ.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <img src="https://snipboard.io/R57I0C.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+<br />
+Next, we'll want to check out the protocol hierarchy. So let's go over to 'Statistics' and click on 'Protocol Hierarchy'. Here we see what kind of protocols exist in this PCAP. So there is DNS, there's TLS and HTTP. Close this out. The next thing we want to take a look at is the conversations. So again, 'Statistics' then 'conversations'. Click on the 'ipv4' tab and we'll sort it by bytes, where the highest bytes are at the top. Looking at the top three conversations, we see our internal IP of '10.11.27.101' is communicating with three external IP addresses. The first starts with '95', the second '176' and the third, '83'. So let's put this in our notes. : <br/>
+<br />
+<img src="https://snipboard.io/lO3tdF.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/ixADah.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/LwHuI5.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/VBiuzN.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/tDObVk.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
 <br />
 <br />
-: <br/>
+Let's take a look at the first entry of this PCAP. Under the 'Info' column, we see that there's a standard DNS query out to this domain here 'A klychenogg.com' and right underneath it we have 'response'. So what this means is that this particular domain 'A klychenogg.com' responded with an IP address of '95.181.198.231. If you recall, this IP is one of the top IPSs that we saw under the 'Conversation' tab. What we can do is go over to 'Virustotal.com'. Then we can just type in the domain and we see that 10 vendors is flagging this as malicious. : <br/>
 <br />
-<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://snipboard.io/2rVRIy.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://snipboard.io/V8uj4K.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-<br />
-<br />
-: <br/>
-<br />
-<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://snipboard.io/Lp7C9P.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
 <br />
 <br />
-: <br/>
+Now let's go ahead and check the IP address. So this one is again '95.181.198.231'. So I'll go ahead and type in the IP address here in 'Virustotal.com.' and I'll hit enter. We don't see any vendors flagging this as malicious, but we do see that this IP is located in Russia. Now a question we can ask is, "Does our client do any business with Russia?" If the answer is no, we might be on to something. Let's go back over to our Wireshark. Now take a look at packet number six. Which occurred at '16:30:15'. We see our first HTTP get-request. I'll go ahead and right-click this. Click on 'Follow' and then 'HTTP stream'.: <br/>
 <br />
-<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://snipboard.io/dCOaU0.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://snipboard.io/Q8Cfib.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://snipboard.io/2uB1KF.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
+<img src="https://snipboard.io/lTsRmu.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-<br />
-<br />
-: <br/>
-<br />
-<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://snipboard.io/iAlFme.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
 <br />
 <br />
-: <br/>
+Looking at the request, we see a file towards 'spet10.spr'. The file response packet shows an MZ header right here. With the infamous string of "This program cannot be run in DOS mode." If you weren't aware, this is a Telltale sign of a portable executable. Such as a 'exe.' or a 'dll'. Let's go ahead and put that in our notes. : <br/>
 <br />
 <img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
@@ -147,7 +142,18 @@ To begin our analysis, we'll first head over to the 'Statistics' tab and click o
 <br />
 <br />
 <br />
-: <br/>
+Again this occurred at '16:30:15'. I'll go ahead and remove the filter. Now let's scroll all the way back up here. What we can do is filter out specifically this '95' IP address and look for HTTP protocols. To do that I'll go ahead and right click the protocol of HTTP and then I'll click on 'Prepare as Filter' then 'Selected'. Finally, I'll right click the '95' address. : <br/>
+<br />
+<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+<br />
+<br />
+Go over to 'Prepare as Filter' and then I'll '...and Selected'. Now looking at our filter, we see it automatically updated. So it's saying to look for the protocol of HTTP and where the IP destination. Which is this 95 IP address on the top. So let's go and hit enter. : <br/>
 <br />
 <img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
