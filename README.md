@@ -131,7 +131,55 @@ Now let's go ahead and check the IP address. So this one is again '95.181.198.23
 <br />
 <br />
 <br />
-Looking at the request, we see a file towards 'spet10.spr'. The file response packet shows an MZ header right here. With the infamous string of "This program cannot be run in DOS mode." If you weren't aware, this is a Telltale sign of a portable executable. Such as a 'exe.' or a 'dll'. Let's go ahead and put that in our notes. : <br/>
+Looking at the request, we see a file towards 'spet10.spr' at the top. The file response packet shows an MZ header right here. With the infamous string of "This program cannot be run in DOS mode." If you weren't aware, this is a Telltale sign of a portable executable. Such as a 'exe.' or a 'dll'. Let's go ahead and put that in our notes. : <br/>
+<br />
+<img src="https://snipboard.io/8s4zP7.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/FeO5Bn.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/7IL3rx.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+<br />
+<br />
+Again this occurred at '16:30:15' at the top of Wireshark. I'll go ahead and remove the filter. Now let's scroll all the way back up here. What we can do is filter out specifically this '95' IP address and look for HTTP protocols. To do that I'll go ahead and right click the protocol of HTTP and then I'll click on 'Prepare as Filter' then 'Selected'. : <br/>
+<br />
+<img src="https://snipboard.io/IsYScw.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/LagRlM.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/l32apo.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+<br />
+<br />
+I'll right click the '95' address. Go over to 'Prepare as Filter' and then I'll '...and Selected'. Now looking at our filter, we see it automatically updated. So it's saying to look for the protocol of HTTP and where the IP destination. Which is this '95' IP address on the top. So let's go and hit enter. : <br/>
+<br />
+<img src="https://snipboard.io/qiw067.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/mAnR6M.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+<br />
+<br />
+We see two results. So one which is is the packet six. Which is the one that we're already aware of. Then on packet 911, we see a get request to a RAR file. I'll right-click this. Click 'Follow', then click on 'HTTP Stream'. Again the request is towards a do RAR file, but looking at the server packet response we see a bunch of random characters. This doesn't really tell us too much yet, but let's just keep note of when this occurred. So this happened at '16:38:39'. : <br/>
+<br />
+<img src="https://snipboard.io/XIZ3OR.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/6mGkIj.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/s8rLhR.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/KIFCVa.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/N3KgQ6.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/3qhH81.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+<br />
+<br />
+All right, now we want to take a look at the second IP address that was listed in our conversation. I'll go ahead and modify our query to look for the IP address of '176.32.33.108'. I'll go ahead and modify the query to 'ip.addr == 176.32.33.108'. Now you might be wondering why I am using 'ip.addr' and not 'Source' or 'Destination' and that is because I'm interested in this IP address as either a 'Source' or a 'Destination' and we can do this by using 'ip.addr'. Let's go ahead and hit enter. Let's scroll all the way up here. Taking a look at the first packet which is packet number 285 that occurred on '16:30:37' UTC time. We see our three-way TCP handshake 'SYN' and 'ACK'. : <br/>
 <br />
 <img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
@@ -142,51 +190,7 @@ Looking at the request, we see a file towards 'spet10.spr'. The file response pa
 <br />
 <br />
 <br />
-Again this occurred at '16:30:15'. I'll go ahead and remove the filter. Now let's scroll all the way back up here. What we can do is filter out specifically this '95' IP address and look for HTTP protocols. To do that I'll go ahead and right click the protocol of HTTP and then I'll click on 'Prepare as Filter' then 'Selected'. Finally, I'll right click the '95' address. : <br/>
-<br />
-<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-<br />
-<br />
-Go over to 'Prepare as Filter' and then I'll '...and Selected'. Now looking at our filter, we see it automatically updated. So it's saying to look for the protocol of HTTP and where the IP destination. Which is this 95 IP address on the top. So let's go and hit enter. : <br/>
-<br />
-<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-<br />
-<br />
-: <br/>
-<br />
-<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-<br />
-<br />
-: <br/>
-<br />
-<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-<br />
-<br />
-: <br/>
+then on packet number 288 we have our first HTTP get request and it seems to be getting some kind of image so let's go ahead and right click follow HTTP stream looking at the request we see this avi file on the domain of cato.com let's quickly check that over on virus total cato.com and we have seven vendors flagging this as malicious going back over to our wire shark we see the IP address of the 176 so let's go ahead and check that on virus total 17 6.32 33108 and just like the previous IP address there are zero vendors flagging this as malicious and it is also located in Russia over to virus total here looking at the server response we do see some what appears to be base 64 maybe and this looks pretty interesting it could be additional malware being downloaded or some additional instructions scroll all the way down here we do see another get request and some more of this random text.: <br/>
 <br />
 <img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
