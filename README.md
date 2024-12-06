@@ -7,7 +7,16 @@ As a SOC analyst, you will eventually be required to investigate p-caps, AKA you
 
 <h2>Applications Used </h2>
 REMnux Malware Toolkit Website (https://docs.remnux.org/install-distro/get-virtual-appliance)
-Blue Teams Labs Login Website (https://blueteamlabs.online/login)
+<br />
+<br />
+Blue Teams Labs Website (https://blueteamlabs.online/login)
+<br />
+<br />
+Zui Website (https://www.brimdata.io/download/)
+<br />
+<br />
+Wireshark Website (https://www.wireshark.org/download.html)
+
 
 <h2>Walk-through Project:</h2>
 
@@ -354,123 +363,142 @@ Expand the last one and that is also the same signature, but if we scroll down a
 <br />
 <br />
 <br />
-Now if we used zooi in the beginning and loaded this peap in we would have immediately seen alerts that would be pretty interesting for us to Zone in and this is why it's always good to have an IDs ready to go to take a look at any peaps that you feed it so we can see if it can generate any alerts with that being said we can say that this user is likely infected with the dryex malware if we head over to our wire shark we can actually export all of the downloaded files that the the user had downloaded to do that I'll go ahead and just remove the filter select file go over to export objects Go to http and these are all the: <br/>
+Now if we used Zui in the beginning and loaded this PCAP in, we would have immediately seen alerts that would be pretty interesting for us to Zone in. And this is why it's always good to have an IDS ready to go to take a look at any PCAPS that you feed it so we can see if it can generate any alerts. With that being said, we can say that this user is likely infected with the 'Dridex' malware. If we head over to our Wireshark we can export all of the downloaded files that the the user had downloaded. To do that, I'll go ahead and just remove the filter. Select 'File' at the top. Go over to 'Export Objects'. Select 'HTTP'. Now you can see all the files that are downloaded. : 
+<br/>
 <br />
-<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://snipboard.io/dwFIAT.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://snipboard.io/WtcBEo.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://snipboard.io/Kaqzpt.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
+<img src="https://snipboard.io/A9NPsg.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
 <br />
-: <br/>
 <br />
-<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+Before you download all of these files, do make sure that you are in a virtual machine. Just in case you accidentally execute malware. I'll click on 'Save All' and let's create a new folder called Malware. I'll select that folder, and that's it. : <br />
 <br />
-<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://snipboard.io/FsCnk4.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://snipboard.io/17KYPv.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
+<img src="https://snipboard.io/bfXUqu.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
+<img src="https://snipboard.io/qGwe9m.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
-: <br/>
 <br />
-<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+Let's head over to our malware folder and these are all the files that exist. What I can do is hold-shift then right-click and I'll open up a Linux shell here. I'll type in 'file *' and we can see that the 6.avi file has 'ASCII text'. We see 'MS Windows icon resource', 'data', and 'ASCII text'. We also see a portable executable which is the file that we observed earlier at the beginning of this PCAP. Finally, we can see another '.avi' that's another ASCII text. Now I can go ahead and just type in 'sha256sum' to generate a file hash for all of these files, but I wanted to show you how you can do this in Powershell; just in case you don't have WSL installed. Now if you wanted to install WSL, just type in 'wsl --install', but do make sure that you're running Powershell with administrative privileges. To generate a file hash for all of the files, you simply type in 'Get-FileHash *' then hit enter and that is it. We have all of the file hashes here. By default, it generates a 'sha256' hash.: <br/>
 <br />
-<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://snipboard.io/mtWl5U.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
+<img src="https://snipboard.io/CAbXon.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
+<img src="https://snipboard.io/5PwDNM.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
+<img src="https://snipboard.io/yTd2Iw.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-: <br/>
 <br />
-<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+We see 'MS Windows icon resource', 'data', and 'ASCII text'. We also see a portable executable, which is the file that we observed earlier at the beginning of this PCAP. Finally, we can see another '.avi' that is another ASCII text. Now I can go ahead and just type in 'sha256sum' to generate a file hash for all of these files, but I wanted to show you how you can do this in Powershell; just in case you don't have WSL installed. Now if you wanted to install WSL, just type in 'wsl --install', but do make sure that you're running Powershell with administrative privileges.: <br/>
 <br />
+<img src="https://snipboard.io/yTd2Iw.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
+<img src="https://snipboard.io/2UXaKt.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
+<img src="https://snipboard.io/YG6kRr.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-: <br/>
 <br />
-<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+To generate a file hash for all of the files, you simply type in 'Get-FileHash *' then hit enter and that is it. We have all of the file hashes here. By default, it generates a 'sha256' hash.: <br/>
 <br />
+<img src="https://snipboard.io/sVXqA7.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
+<img src="https://snipboard.io/v659jd.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
-: <br/>
 <br />
-<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+Now we can go ahead and copy these file hashes and search on Virustotal to see if any of them exist. Searching the hash on Virustotal of the executable that was requested in the beginning, 60 vendors have reported this as malicious. Looking at the threat categories we have Trojan and spyware. Going over to the community, looking at the classification, we see this as 'ursnif'. Now I believe we have enough information to begin and answer the questions. : <br/>
 <br />
-<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://snipboard.io/74RN1d.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
+<img src="https://snipboard.io/n9rcVx.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
+<img src="https://snipboard.io/KfvUlo.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
-: <br/>
 <br />
-<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+Heading over to the questions here. The first question is, 'What is the private IP of the infected host? 
 <br />
-<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+Taking a look at the get-request. we see that the private IP is '10.11.27.25'.
 <br />
+The second question is, 'What's the malware binary that the macro document is trying to retrieve?
 <br />
+We saw that as 'spet10.sspr'. : <br />
 <br />
+<img src="https://snipboard.io/eFoRgm.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-: <br/>
+<img src="https://snipboard.io/xkhjLM.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://snipboard.io/EDoXtm.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
+Third question is, 'From what domain HTTP requests with GET /image/ are coming from?' 
 <br />
+So I can type in 'HTTP.request.method == GET'. This will show us all of the get-requests. We see the requests from images here, and we see the IP of 176, but I believe it was asking for the domain. So what we can do is right-click 'Follow' and then select 'HTTP Stream'. Now, we see the domain right here. So I'll type in 'cochrimato.com'. : <br/>
 <br />
-: <br/>
+<img src="https://snipboard.io/gulpBk.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://snipboard.io/Fuje60.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://snipboard.io/tBahJU.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://snipboard.io/R5x14m.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
+<img src="https://snipboard.io/Rs91dM.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
 <br />
-: <br/>
 <br />
-<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+The fourth question is, 'The SOC Team found Drideex, a follow-up malware from the Ursnif infection, to be the culprit. The customer who sent her macro file is compromised. What's the full URL ending in .rar where Ursnif retrieves the follow-up malware from?'
 <br />
-<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+We can go back over to Wireshark. Type in 'http. request.method == GET'. Right-click packet number 911. Click 'Follow' and then click 'HTTP Stream'. Finally, copy and paste the raw file at the top of the page. You might ask, "How did I know it was HTTP?" Well if we go over to Wireshark, the protocol is HTTP and the port is '80'. So that's how I know. : <br/>
 <br />
-<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://snipboard.io/rlQ9cU.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
+<img src="https://snipboard.io/3jVnOB.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
+<img src="https://snipboard.io/nA6W4j.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
+<img src="https://snipboard.io/nA6W4j.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-: <br/>
+<img src="https://snipboard.io/2Fr6W5.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+The final question is, 'What is the Dridex post-infection traffic IP address beginning with 185.?'
+<br />
+Thankfully, we used Zui. Which helped us identify this IP address. Which is '185.244.150.23'. Let's copy that head over to the questions and go ahead and paste that in. Now you've completed this lab!: <br/>
+<br />
+<img src="https://snipboard.io/JK4pa7.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/rYxbJj.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/XNm3WG.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+<br />
+<br />
+I hope by following along you do feel a little bit more confident in your skills when analyzing PCAPS. As that is a skill that will benefit you going forward in your IT career. : <br/>
 <br />
 <br />
 <br />
