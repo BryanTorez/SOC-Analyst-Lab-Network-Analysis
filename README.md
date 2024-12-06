@@ -240,40 +240,42 @@ Now let's search this domain on Virustotal here. So there are two vendors flaggi
 <br />
 <br />
 <br />
-Next, let's take a look at DNS since we saw that in our 'Protocol Hierarchy. So go back to Wireshark and let's type in DNS. Now we do see 'klychenogg.com', 'cochrimato.com', 'opendns.com', 'in-addr.arpa', and some other ones and that's about it. So the only new one is 'opendns.com'. I don't think that's anything of concern because if we take a look at what open DNS is, we can see it is a company providing domain name system resolution services with features such as fishing protection, optimal content filtering, and DNS lookups. Seems pretty normal to me. Going back over to Wireshark here, let's clear out the filter. If you recall on packet 911, the user downloaded a RAR file. So let's go and take a look at that packet. So we see the get-request towards the RAR file over to the IP address of '95.181.198.231'. If we scroll down, we do see some back and forth communication towards the internal IP address and towards this '95' address. Eventually, we see some more traffic towards our '83' address and on packet '123' we get a new IP of '185.244.115.230'. This occurred at '16:38:57'. So TCPs handshakes both 'SYN' and 'ACK', we also get our 'Client Hello' but there is no SNI packet. What we can do is search up on Virustotal address '185.244.150.230' and we'll find there are five vendors flagging this as malicious. <br/>
+Next, let's take a look at DNS since we saw that in our 'Protocol Hierarchy. So go back to Wireshark and let's type in DNS. Now we do see 'klychenogg.com', 'cochrimato.com', 'opendns.com', 'in-addr.arpa', and some other ones and that's about it. So the only new one is 'opendns.com'. I don't think that's anything of concern because if we take a look at what open DNS is, we can see it is a company providing domain name system resolution services with features such as fishing protection, optimal content filtering, and DNS lookups. Seems pretty normal to me. <br/>
 <br />
 <img src="https://snipboard.io/3HGpWM.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <img src="https://snipboard.io/S7aBZq.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://snipboard.io/GRtkNh.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/3ZhoKL.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
 <br />
 <br />
-: <br/>
+Going back over to Wireshark here, let's clear out the filter. If you recall on packet 911, the user downloaded a RAR file. So let's go and take a look at that packet. So we see the get-request towards the RAR file over to the IP address of '95.181.198.231'. : <br/>
 <br />
-<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://snipboard.io/fr06NS.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-<br />
-<br />
-: <br/>
-<br />
-<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://snipboard.io/d7ejfx.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
 <br />
 <br />
-: <br/>
+If we scroll down, we do see some back and forth communication towards the internal IP address and towards this '95' address. Eventually, on packet '1203' we get a new IP of '185.244.115.230'. This occurred at '16:38:57'. So TCPs handshakes both 'SYN' and 'ACK', we also get our 'Client Hello' but there is no SNI packet. What we can do is search on Virustotal of the address '185.244.150.230'. Where we'll then find five vendors are flagging this as malicious.: <br/>
+<br />
+<img src="https://snipboard.io/3ZCzxi.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/prJGvi.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/WgaP3T.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+<br />
+<br />
+going over to community uh doesn't say much to help with this investigation we can use another tool called zooie which is practically Zeke and surot combined to download this tool you can search up on Google zooie tool and although it is tempting to select the first one this is the documents you want to select brim data so if you head over to brim data. go over to download and you want to download zooi Zed is the command line version of this and I already have zooie here so with zooie downloaded just double click that and what we can do is just drag our p cap in once that's done you'll see a nice green check mark and on the top right corner just select query pool and now from here we can begin querying our peacat: <br/>
 <br />
 <img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
