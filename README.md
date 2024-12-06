@@ -181,7 +181,33 @@ We see two results. So one which is is the packet six. Which is the one that we'
 <br />
 All right, now we want to take a look at the second IP address that was listed in our conversation. I'll go ahead and modify our query to look for the IP address of '176.32.33.108'. I'll go ahead and modify the query to 'ip.addr == 176.32.33.108'. Now you might be wondering why I am using 'ip.addr' and not 'Source' or 'Destination' and that is because I'm interested in this IP address as either a 'Source' or a 'Destination' and we can do this by using 'ip.addr'. Let's go ahead and hit enter. Let's scroll all the way up here. Taking a look at the first packet which is packet number 285 that occurred on '16:30:37' UTC time. We see our three-way TCP handshake 'SYN' and 'ACK'. : <br/>
 <br />
-<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://snipboard.io/6XtbMs.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/zAg3Sj.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/F9h2r7.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+<br />
+<br />
+On packet number 288, we have our first HTTP get-request and it seems to be getting some kind of image. So let's go ahead and right-click. Click 'Follow' and then click 'HTTP Stream'. Looking at the request we see this '.avi' file on the domain of cochrimato.com. Let's quickly check that over on Virustotal. We have seven vendors flagging this as malicious. Going back over to our Wireshark, we see the IP address of the 176. So let's go ahead and check that on Virustotal. Just like the previous IP address, there are zero vendors flagging this as malicious and it is also located in Russia. : <br/>
+<br />
+<img src="https://snipboard.io/0c4djg.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/NmYlfh.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/ced4Zp.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/EBTRZN.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/ubQD2C.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+<br />
+<br />
+The next thing we want to do is take a look at the last IP address that we saw in the 'Conversations' tab. I'll type in 'ip. == addr 83.166.247.211'. Make sure that we're to the top. So the first packet was on 754 and this occurred at '16:31:52'. Looking at the traffic here just appears to be all encrypted traffic based on the TLs version 1.2. : <br/>
+<br />
+<img src="https://snipboard.io/ws9ID8.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
@@ -190,51 +216,31 @@ All right, now we want to take a look at the second IP address that was listed i
 <br />
 <br />
 <br />
-then on packet number 288 we have our first HTTP get request and it seems to be getting some kind of image so let's go ahead and right click follow HTTP stream looking at the request we see this avi file on the domain of cato.com let's quickly check that over on virus total cato.com and we have seven vendors flagging this as malicious going back over to our wire shark we see the IP address of the 176 so let's go ahead and check that on virus total 17 6.32 33108 and just like the previous IP address there are zero vendors flagging this as malicious and it is also located in Russia over to virus total here looking at the server response we do see some what appears to be base 64 maybe and this looks pretty interesting it could be additional malware being downloaded or some additional instructions scroll all the way down here we do see another get request and some more of this random text.: <br/>
+We can take a look at the field called the SNI field, found within the 'Client Hello' packet. This will tell us what domain the internal IP is trying to access. We can filter for 'Client Hello' packets by selecting packet 757 which contains a 'Client Hello' as we can see under the 'Info' column. So it already has an SNI field called 'mautergase.com'. We can filter the 'Client Hello' by selecting the packet. Then expand our 'Transport Layer Security'. So go ahead and expand that. I'll expand the 'Handshake Protocol' and 'handshake type'. We see it as 'Client Hello'. So what we can do is right-click this, click on 'Prepare as Filter' and click on 'Selected'. Now we see all 'Client Hello' traffic, along with the SNI field.
 <br />
-<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://snipboard.io/0bo3Ha.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://snipboard.io/MsG4F8.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://snipboard.io/9gtOub.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
+<img src="https://snipboard.io/OREj5G.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-<br />
-<br />
-: <br/>
-<br />
-<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://snipboard.io/pw8Ry4.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
 <br />
 <br />
-: <br/>
+Now let's search this domain on Virustotal here. So there are two vendors flagging this as malicious. Let's search up the IP address next and I'm willing to bet that this is also located in Russia. Now two vendors flagging this as malicious: <br/>: <br/>
 <br />
-<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://snipboard.io/RmJjW1.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
-<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://snipboard.io/0AtkpY.jpg" height="80%" width="80%" alt="Disk Sanitization Steps">
 <br />
 <br />
 <br />
 <br />
-: <br/>
-<br />
-<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-<br />
-<br />
-<br />
-<br />
-: <br/>
+Next, let's take a look at DNS since we saw that in our 'Protocol Hierarchy. So go back to Wireshark and let's type in DNS. Now we do see 'klychenogg.com', 'cochrimato.com', 'opendns.com', 'in-addr.arpa', and some other ones and that's about it. So the only new one is 'opendns.com'. I don't think that's anything of concern because if we take a look at what open DNS is, we can see it is a company providing domain name system resolution services with features such as fishing protection, optimal content filtering, and DNS lookups. Seems pretty normal to me. Going back over to Wireshark here, let's clear out the filter. If you recall on packet 911, the user downloaded a RAAR file. So let's go and take a look at that packet. So we see the get-request towards the RAR file over to the IP address of 95.1 1811 198.23. If we scroll down, we do see some back and forth communication towards the internal IP address and towards this 95 address. Eventually, we see some more traffic towards our 83 address and ooh on packet 123 we get a new IP of 185. 2441 15230 and this occurred on 163857 : <br/>
 <br />
 <img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
