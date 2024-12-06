@@ -264,7 +264,7 @@ Going back over to Wireshark here, let's clear out the filter. If you recall on 
 <br />
 <br />
 <br />
-If we scroll down, we do see some back and forth communication towards the internal IP address and towards this '95' address. Eventually, on packet '1203' we get a new IP of '185.244.115.230'. This occurred at '16:38:57'. So TCPs handshakes both 'SYN' and 'ACK', we also get our 'Client Hello' but there is no SNI packet. What we can do is search on Virustotal of the address '185.244.150.230'. Where we'll then find five vendors are flagging this as malicious.: <br/>
+If we scroll down, we do see some back-and-forth communication towards the internal IP address and towards this '95' address. Eventually, on packet '1203' we get a new IP of '185.244.115.230'. This occurred at '16:38:57'. So TCPs handshakes both 'SYN' and 'ACK', we also get our 'Client Hello' but there is no SNI packet. What we can do is search on Virustotal of the address '185.244.150.230'. Where we'll then find five vendors are flagging this as malicious.: <br/>
 <br />
 <img src="https://snipboard.io/3ZCzxi.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
@@ -275,7 +275,152 @@ If we scroll down, we do see some back and forth communication towards the inter
 <br />
 <br />
 <br />
-To help with this investigation we can use another tool called Zui. To download this tool, you can search on Google for "Brim Data Inc.". Go over to download and you want to download zooi Zed is the command line version of this and I already have zooie here so with zooie downloaded just double click that and what we can do is just drag our p cap in once that's done you'll see a nice green check mark and on the top right corner just select query pool and now from here we can begin querying our peacat: <br/>
+To help with this investigation we can use another tool called Zui. To download this tool, you can search on Google for "Brim Data Inc.". Go over to 'Download' and you want to download Zui. : <br/>
+<br />
+<img src="https://snipboard.io/mA4CTk.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/b9R1Ko.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+<br />
+<br />
+So with Zui downloaded, double-click that and what we can do is just drag our PCAP in. Once that's done you'll see a nice green check mark and select' Query Pool' on the top right corner. Now from here, we can begin querying our PCAT. : <br/>
+<br />
+<img src="https://snipboard.io/37AHjU.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/P20Qly.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/4HVRy1.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/0vGJEc.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+<br />
+<br />
+So what I can do is just type in 'alert' and then hit 'enter'. Now we see an alert here with also some SSL traffic. Still, I'm interested in any alerts that this particular PCAP had generated. So let's right-click the event type of 'alert'. I'll select 'Filter == Value'. So now I see 'event_type equal == "alert"'. Wow, we have 12 alerts. : <br/>
+<br />
+<img src="https://snipboard.io/sXMV0h.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/ZB3TzV.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/LqFzKx.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/P5UnFI.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/gAIxYw.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+<br />
+<br />
+Looking at the source IP address, we see the new IP that we just identified which is '185.244.115.230'. (Just so you're aware, the time is the earliest at the bottom and the latest is at the top.): <br/>
+<br />
+<img src="https://snipboard.io/gAIxYw.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/zpgYHM.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+<br />
+<br />
+So let's look at the earliest event for this particular IP address. I'll go ahead and expand that. I'll also expand this alert field. Take a look at the signature, we have "ET MALWARE ABUSE.CH SSL Blacklist Malicious SSL certificate detected (Dridex)". : <br/>
+<br />
+<img src="https://snipboard.io/49lVsY.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/RKx3Ch.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/LpDFz1.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+<br />
+<br />
+Looking at the second one it appears to be the same signature. : <br/>
+<br />
+<img src="https://snipboard.io/JezLXl.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/vXw3lj.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/FENpDi.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+<br />
+<br />
+Expand the last one and that is also the same signature, but if we scroll down and look at the category it says "Domain Observed Used for C2 Detected".: <br/>
+<br />
+<img src="https://snipboard.io/gBNif4.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/Co3zJU.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/wADSvL.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+<br />
+<br />
+Now if we used zooi in the beginning and loaded this peap in we would have immediately seen alerts that would be pretty interesting for us to Zone in and this is why it's always good to have an IDs ready to go to take a look at any peaps that you feed it so we can see if it can generate any alerts with that being said we can say that this user is likely infected with the dryex malware if we head over to our wire shark we can actually export all of the downloaded files that the the user had downloaded to do that I'll go ahead and just remove the filter select file go over to export objects Go to http and these are all the: <br/>
+<br />
+<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+<br />
+<br />
+: <br/>
+<br />
+<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+<br />
+<br />
+: <br/>
+<br />
+<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+<br />
+<br />
+: <br/>
+<br />
+<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+<br />
+<br />
+: <br/>
+<br />
+<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+<br />
+<br />
+: <br/>
+<br />
+<img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/t6dWjO.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<img src="https://snipboard.io/296s5t.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<br />
+<br />
+<br />
+<br />
+: <br/>
 <br />
 <img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
