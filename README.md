@@ -275,7 +275,7 @@ If we scroll down, we do see some back and forth communication towards the inter
 <br />
 <br />
 <br />
-going over to community uh doesn't say much to help with this investigation we can use another tool called zooie which is practically Zeke and surot combined to download this tool you can search up on Google zooie tool and although it is tempting to select the first one this is the documents you want to select brim data so if you head over to brim data. go over to download and you want to download zooi Zed is the command line version of this and I already have zooie here so with zooie downloaded just double click that and what we can do is just drag our p cap in once that's done you'll see a nice green check mark and on the top right corner just select query pool and now from here we can begin querying our peacat: <br/>
+To help with this investigation we can use another tool called Zui. To download this tool, you can search on Google for "Brim Data Inc.". Go over to download and you want to download zooi Zed is the command line version of this and I already have zooie here so with zooie downloaded just double click that and what we can do is just drag our p cap in once that's done you'll see a nice green check mark and on the top right corner just select query pool and now from here we can begin querying our peacat: <br/>
 <br />
 <img src="https://snipboard.io/SKWgji.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
