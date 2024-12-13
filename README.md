@@ -60,7 +60,7 @@ Now this right here is a very realistic scenario that happens more often than yo
 <br />
 <br />
 <br />
-Now once you're in Wireshark, the first thing you want to do is customize your columns and the time display format. I have mine already set up from previous labs, but I'm going to teach you how to do that. You want to first head over to view, and go under time display format. You want to select UTC date and time of day. : <br/>
+Now once you're in Wireshark, the first thing you want to do is customize your columns and the time display format. I have mine already set up, but I'm going to teach you how to do that. You want to first head over to view, and go under time display format. You want to select UTC date and time of day. : <br/>
 <br />
 <img src="https://snipboard.io/9lw1dL.jpg" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
